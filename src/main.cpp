@@ -131,6 +131,7 @@ void loop() {
 		return;
 	}
 
+	// adds the first round
 	if (gameRound == 1)
 		rounds[0] = &leds[random(0, 4)];
 
@@ -213,6 +214,7 @@ void pickMode() {
 					delay(100);
 
 					if (buttonIsPressed(BUTTON_4_PIN)) {
+						blink(LED_RED_PIN, 100, 5);
 						loop = false;	
 						break;
 					}
@@ -293,6 +295,7 @@ void checkHighScore(unsigned int score) {
 	}
 }
 
+// blinks the led with a sound
 void showLed(Led* led) {
 	Serial.println(led->led);
 	digitalWrite(led->led, HIGH);
@@ -307,6 +310,7 @@ bool buttonIsPressed(int pin) {
 	return digitalRead(pin) == 0;
 }
 
+// blinks a array of leds 
 void blink(int pins[4], int blinkMs, int amount) {
 	for (size_t j = 0; j < amount; j++) {
 
@@ -348,6 +352,7 @@ void playSound(Sound sounds[], int length) {
 	noTone(BUZZER_PIN);
 }
 
+// resets the game
 void reset() {
 	gameRound = 1;
 	STATE = NOTRUNNING;
