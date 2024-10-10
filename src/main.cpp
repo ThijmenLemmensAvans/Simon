@@ -243,6 +243,7 @@ void choosingLed() {
 	{
 		int button = getButtonPressed();
 
+		// -1 indicates that no button is pressed
 		if (button != -1) {
 			// Gets the led that needs to be choosen.
 			Led* led = rounds[input];
